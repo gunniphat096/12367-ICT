@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>แบบฟอร์มจองตั๋วคอนเสิร์ต</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(120deg, #89f7fe, #66a6ff);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .form-container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+        text-align: center;
+        background: #007bff;
+        color: white;
+        padding: 15px;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        font-size: 2rem;
+    }
+
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: 600;
+    }
+
+    input, select {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        box-sizing: border-box;
+    }
+
+    .button-group {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    button {
+        flex: 1;
+        margin: 0 5px;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .submit-btn {
+        background: #28a745;
+        color: #fff;
+    }
+
+    .submit-btn:hover {
+        background: #218838;
+    }
+
+    .reset-btn {
+        background: #dc3545;
+        color: #fff;
+    }
+
+    .reset-btn:hover {
+        background: #c82333;
+    }
+</style>
+
+<div class="form-container">
+    <h2>จองตั๋วคอนเสิร์ต</h2>
+    
+    <form method="post" action="/book-ticket/">
+        {% csrf_token %}
+        
+        <label for="name">ชื่อผู้จอง</label>
+        <input type="text" id="name" name="name" placeholder="กรอกชื่อ-นามสกุล" required>
+
+        <label for="email">อีเมล</label>
+        <input type="email" id="email" name="email" placeholder="กรอกอีเมล" required>
+
+        <label for="concert">คอนเสิร์ต</label>
+        <select id="concert" name="concert" required>
+            <option value="concert1">กรุงเทพฯ อารีน่า (1,500 Baht)</option>
+            <option value="concert2">เมืองทองธานี (3,500 Baht)</option>
+            <option value="concert3">เอเชียทีค เดอะ ริเวอร์ฟรอนท์ (2,000 Baht)</option>
+            <option value="concert4">เมืองไทยรัชดาลัย เธียเตอร์ (3,200 Baht)</option>
+        </select>
+
+        <label for="date">วันที่จัดงาน</label>
+        <input type="date" id="date" name="date" min="{{ today }}" required>
+
+        <label for="location">สถานที่</label>
+        <select id="location" name="location" required>
+            <option value="stadium">สนามกีฬา</option>
+            <option value="arena">อารีน่า</option>
+            <option value="open-air">กลางแจ้ง</option>
+        </select>
+
+        <label for="seats">ที่นั่ง</label>
+        <select id="seats" name="seats" required>
+            <option value="front-row">แถวหน้า</option>
+            <option value="middle-row">แถวกลาง</option>
+            <option value="back-row">แถวหลัง</option>
+        </select>
+
+        <div class="button-group">
+            <button type="submit" class="submit-btn">ยืนยัน</button>
+            <button type="reset" class="reset-btn">ล้างข้อมูล</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

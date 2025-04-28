@@ -1,0 +1,5 @@
+<form method="post" action="/book-ticket/">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- แสดงฟอร์ม -->
+    <button type="submit">ยืนยันการจอง</button>
+</form>

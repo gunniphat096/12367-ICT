@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>แนะนำสถานที่คอนเสิร์ต - ICT12367 SPU</title>
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แนะนำสถานที่คอนเสิร์ต</title>
+<style>
+    /* ----------- พื้นหลังและฟอนต์ ----------- */
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f7fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* ----------- Container หลัก ----------- */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 50px 20px;
+    }
+
+    /* ----------- ส่วนหัว (Header) ----------- */
+    header {
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    header h1 {
+        font-size: 42px;
+        color: #222;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    header p {
+        font-size: 20px;
+        color: #555;
+        margin-bottom: 40px;
+    }
+
+    /* ----------- กล่องสถานที่ (Venue) ----------- */
+    .venue-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+    }
+
+    .venue {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* เพิ่ม */
+    z-index: 1; /* เพิ่ม */
+    }
+
+    .venue:hover {
+    transform: scale(1.03); /* ขยายตัว 3% */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+    }
+
+
+    .venue img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    .venue h3 {
+        font-size: 24px;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    .venue p {
+        font-size: 16px;
+        color: #777;
+        margin-bottom: 20px;
+    }
+
+    /* ----------- ปุ่มเพิ่มเติม (Button More) ----------- */
+    .btn-more {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-more:hover {
+        background-color: #0056b3;
+    }
+
+    /* ----------- หัวข้อย่อย (Subheading) ----------- */
+    h2 {
+        font-size: 36px;
+        color: #343a40;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    /* ----------- ตารางข้อมูล (Table) ----------- */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 60px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    table th, table td {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background-color: #007bff;
+        color: #fff;
+        font-weight: bold;
+        font-size: 18px;
+    }
+
+    table tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+    .btn-price {
+        margin-top: 10px;
+        padding: 8px 15px;
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .btn-price:hover {
+        background-color: #218838;
+    }
+
+    .price-box {
+        margin-top: 15px;
+        padding: 15px;
+        background-color: #f1f1f1;
+        color: #333;
+        border-radius: 10px;
+        display: none;
+        transition: all 0.3s ease;
+    }
+
+    .price-box.show {
+        display: block;
+        animation: fadeUp 0.5s ease;
+    }
+
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+</style>
+
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>แนะนำสถานที่จัดคอนเสิร์ต</h1>
+            <p>พบกับสถานที่คอนเสิร์ตที่น่าสนใจในเมืองไทย ซึ่งพร้อมต้อนรับคุณเข้าร่วมงานแสดงสดจากศิลปินชื่อดัง</p>
+        </header>
+
+        <h2>สถานที่จัดคอนเสิร์ต</h2>
+        <div class="venue-container">
+
+            <div class="venue">
+                <img src="https://positioningmag.com/wp-content/uploads/2022/07/2-152.jpg" alt="สถานที่คอนเสิร์ต 1">
+                <h3>กรุงเทพฯ อารีน่า</h3>
+                <p>สถานที่จัดคอนเสิร์ตที่ใหญ่ที่สุดในกรุงเทพฯ จุคนได้ถึง 10,000 คน เหมาะสำหรับคอนเสิร์ตใหญ่ๆ</p>
+                <a href="https://maps.google.com" class="btn-more" target="_blank">ดูแผนที่</a>
+                <button class="btn-price" onclick="togglePrice(this)">ดูราคาตั๋ว</button>
+                <div class="price-box">
+                    <p>ราคาตั๋ว: 1,500</p>
+                </div>
+            </div>
+
+            <!-- ทำซ้ำเหมือนเดิมกับอีก 3 อัน -->
+            <div class="venue">
+                <img src="https://forbesthailand.com/wp-content/uploads/2024/06/QkAGCW2A2A5o2Ydbrnef.jpg" alt="สถานที่คอนเสิร์ต 2">
+                <h3>เมืองทองธานี</h3>
+                <p>อีกหนึ่งสถานที่ที่เหมาะสำหรับคอนเสิร์ตกลางแจ้ง ด้วยบรรยากาศที่เปิดโล่งและกว้างขวาง</p>
+                <a href="https://maps.google.com" class="btn-more" target="_blank">ดูแผนที่</a>
+                <button class="btn-price" onclick="togglePrice(this)">ดูราคาตั๋ว</button>
+                <div class="price-box">
+                    <p>ราคาตั๋ว: 3,500 บาท</p>
+                </div>
+            </div>
+
+            <div class="venue">
+                <img src="https://cms.dmpcdn.com/travel/2023/04/20/4809c5b0-df6e-11ed-a131-c9993d72c65c_webp_original.jpg" alt="สถานที่คอนเสิร์ต 3">
+                <h3>เอเชียทีค เดอะ ริเวอร์ฟรอนท์</h3>
+                <p>สถานที่ที่มีวิวสวยงามริมแม่น้ำเจ้าพระยา เหมาะสำหรับคอนเสิร์ตในบรรยากาศโรแมนติก</p>
+                <a href="https://maps.google.com" class="btn-more" target="_blank">ดูแผนที่</a>
+                <button class="btn-price" onclick="togglePrice(this)">ดูราคาตั๋ว</button>
+                <div class="price-box">
+                    <p>ราคาตั๋ว: 2,000 บาท</p>
+                </div>
+            </div>
+
+            <div class="venue">
+                <img src="https://image.makewebeasy.com/makeweb/m_1920x0/S2bLq7Pjm/Theatre/1000px%20Banner%20Theatre.jpg" alt="สถานที่คอนเสิร์ต 4">
+                <h3>เมืองไทยรัชดาลัย เธียเตอร์</h3>
+                <p>บรรยากาศโรงหนัง ทันสมัยและสะดวกสบาย พร้อมระบบ IMAX หรือ 4DX สุดล้ำ</p>
+                <a href="https://maps.google.com" class="btn-more" target="_blank">ดูแผนที่</a>
+                <button class="btn-price" onclick="togglePrice(this)">ดูราคาตั๋ว</button>
+                <div class="price-box">
+                    <p>ราคาตั๋ว: 3,200 บาท</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script>
+        function togglePrice(btn) {
+            const priceBox = btn.nextElementSibling;
+            priceBox.classList.toggle('show');
+        }
+    </script>
+
+        <h2>รายชื่อผู้จองตั๋ว</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ชื่อผู้จอง</th>
+                    <th>สถานที่คอนเสิร์ต</th>
+                    <th>วันที่จอง</th>
+                    <th>จำนวนตั๋ว</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>สมชาย พวงเพ็ชร</td>
+                    <td>กรุงเทพฯ อารีน่า</td>
+                    <td>2025-04-25</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <td>จิราภรณ์ เที่ยงตรง</td>
+                    <td>เมืองทองธานี</td>
+                    <td>2025-04-24</td>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <td>วิลาวัลย์ พันธุ์ทอง</td>
+                    <td>เอเชียทีค เดอะ ริเวอร์ฟรอนท์</td>
+                    <td>2025-04-26</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>ณัฐพล ศรีสุทิน</td>
+                    <td>เมืองไทยรัชดาลัย เธียเตอร์</td>
+                    <td>2025-04-23</td>
+                    <td>4</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
+{% endblock %}

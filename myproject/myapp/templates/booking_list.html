@@ -1,0 +1,25 @@
+<table border="1" style="width: 100%; border-collapse: collapse;">
+    <thead>
+        <tr>
+            <th>ชื่อผู้จอง</th>
+            <th>อีเมล</th>
+            <th>คอนเสิร์ต</th>
+            <th>วันที่</th>
+            <th>สถานที่จัดงาน</th>
+            <th>ที่นั่ง</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{ booking.name }}</td>
+            <td>{{ booking.email }}</td>
+            <td>{{ booking.concert }}</td>
+            <td>{{ booking.date }}</td>
+            <td>{{ booking.location }}</td>
+            <td>{{ booking.seats }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+

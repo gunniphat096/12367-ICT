@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>เกี่ยวกับเรา - ICT12367 SPU</title>
+{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background: #62edff; /* สีฟ้าอ่อนแบบนุ่มๆ */
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: white;
+        text-align: center;
+    }
+
+    .container {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 15px;
+        margin: 50px auto;
+        padding: 40px 30px;
+        width: 85%;
+        max-width: 800px;
+        color: #333;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        font-size: 2.8rem;
+        color: #004085;
+        margin-bottom: 20px;
+    }
+
+    h2 {
+        font-size: 2rem;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        color: #0056b3;
+    }
+
+    p {
+        font-size: 1.25rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+        text-align: justify;
+    }
+
+    ul {
+        text-align: left;
+        padding-left: 20px;
+        font-size: 1.2rem;
+        line-height: 1.8;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+    }
+
+    ul li::before {
+        content: '✅ ';
+        color: #28a745;
+    }
+</style>
+
+<div class="container">
+    <h1>เกี่ยวกับเรา</h1>
+    <p>
+        เราคือเว็บจองตั๋วคอนเสิร์ตออนไลน์ที่มุ่งมั่นที่จะทำให้การเข้าร่วมคอนเสิร์ตเป็นเรื่องง่ายและสะดวกสบายสำหรับทุกคน  
+        เป้าหมายของเราคือการช่วยให้คุณสามารถเลือกซื้อบัตรคอนเสิร์ตได้อย่างง่ายดายจากหลากหลายสถานที่จัดงานทั่วประเทศ  
+        พร้อมทั้งจัดการข้อมูลการจองให้เป็นระเบียบและปลอดภัย
+    </p>
+
+    <h2>บริการของเรา</h2>
+    <ul>
+        <li>การจองตั๋วคอนเสิร์ตจากสถานที่หลากหลาย</li>
+        <li>การแสดงข้อมูลคอนเสิร์ตที่กำลังจะมีขึ้น</li>
+        <li>ระบบการชำระเงินที่ปลอดภัย</li>
+        <li>การเลือกที่นั่งที่สะดวกสบาย</li>
+        <li>คำแนะนำเกี่ยวกับคอนเสิร์ตและสถานที่จัดงาน</li>
+    </ul>
+
+    <h2>สถานที่จัดคอนเสิร์ต</h2>
+    <ul>
+        <li>สนามกีฬาใหญ่</li>
+        <li>อารีน่าและฮอลล์คอนเสิร์ต</li>
+        <li>สถานที่ที่มีวิวสวยงามริมแม่น้ำ</li>
+        <li>สถานที่กลางแจ้งที่มีความเหมาะสมกับคอนเสิร์ตแบบเปิด</li>
+    </ul>
+</div>
+{% endblock %}
